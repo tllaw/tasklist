@@ -1,0 +1,51 @@
+<%
+  classes =
+    case type
+    when :danger
+      {
+        alert: "bg-red-100 text-red-600 border-red-600",
+        dismiss_button: "hover:text-red-900",
+      }
+    when :warning
+      {
+        alert: "bg-amber-100 text-amber-600 border-amber-600",
+        dismiss_button: "hover:text-amber-900",
+      }
+    when :success
+      {
+        alert: "bg-emerald-100 text-emerald-600 border-emerald-600",
+        dismiss_button: "hover:text-emerald-900",
+      }
+    else
+      {
+        alert: "bg-sky-100 text-sky-600 border-sky-600",
+        dismiss_button: "hover:text-sky-900",
+      }
+    end
+
+  icon =
+    case type
+    when :danger
+      "fa-circle-xmark"
+    when :warning
+      "fa-triangle-exclamation"
+    when :success
+      "fa-circle-check"
+    else
+      "fa-circle-info"
+    end
+%>
+
+<div class="alert-dismissible flex justify-between items-center border-l-4 <%= classes[:alert] %>">
+  <div class="px-6 py-4 flex">
+    <div>
+      <i class="fa-solid <%= icon %> mr-2"></i>
+    </div>
+    <div>
+      <%= message %>
+    </div>
+  </div>
+  <button class="px-6 py-4 <%= classes[:dismiss_button] %>" onclick="dismiss_alert(this)">
+    <i class="fa-solid fa-xmark"></i>
+  </button>
+</div>
