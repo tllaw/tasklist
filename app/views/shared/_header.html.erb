@@ -1,0 +1,14 @@
+<nav class="p-2 flex justify-between bg-blue-500 text-white">
+  <div class="p-4 font-medium">Tasklist</div>
+  <%= button_to "Logout", destroy_user_session_path, method: :delete, class: "p-4 hover:bg-blue-600 rounded" %>
+</nav>
+
+<div class="container p-2 mx-auto">
+  <% if alert %>
+    <%= render partial: "shared/alerts/simple", locals: { type: :danger, message: alert } %>
+  <% end %>
+  <% if notice %>
+    <%= render partial: "shared/alerts/simple", locals: { type: :info, message: notice } %>
+  <% end %>
+  <%= yield %>
+</div>
